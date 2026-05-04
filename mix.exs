@@ -49,14 +49,16 @@ defmodule Cloudex.Mixfile do
 
   defp deps do
     [
-      {:credo, "> 0.0.0", only: :dev, runtime: false},
-      {:dialyxir, "~> 1.0.0-rc.3", only: [:dev], runtime: false},
+      {:credo, "~> 1.7", only: :dev, runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev], runtime: false},
       {:earmark, "> 0.0.0", only: :dev},
       {:ex_doc, "> 0.0.0", only: :dev},
       {:excoveralls, "> 0.0.0", only: :test},
       {:exvcr, "~> 0.10", [only: :test]},
       {:httpoison, "~> 1.6"},
-      {:mix_test_watch, "> 0.0.0", only: :dev},
+      # Hackney pins 1.1.5, which does not compile on OTP 26+ (public_key record changes).
+      {:ssl_verify_fun, "~> 1.1.7", override: true},
+      {:mix_test_watch, "~> 1.4", only: :dev},
       {:jason, "~> 1.0", optional: true}
     ]
   end
