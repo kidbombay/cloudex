@@ -242,9 +242,6 @@ defmodule Cloudex.CloudinaryApi do
 
   @spec current_time :: String.t()
   defp current_time do
-    Timex.now()
-    |> Timex.to_unix()
-    |> round
-    |> Integer.to_string()
+    :os.system_time(:second) |> Integer.to_string()
   end
 end
