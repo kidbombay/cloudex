@@ -24,7 +24,15 @@ defmodule Cloudex.Mixfile do
           :unmatched_returns
         ]
       ],
-      preferred_cli_env: [
+      test_coverage: [
+        tool: ExCoveralls
+      ]
+    ]
+  end
+
+  def cli do
+    [
+      preferred_envs: [
         coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
@@ -33,9 +41,6 @@ defmodule Cloudex.Mixfile do
         "vcr.delete": :test,
         "vcr.check": :test,
         "vcr.show": :test
-      ],
-      test_coverage: [
-        tool: ExCoveralls
       ]
     ]
   end
